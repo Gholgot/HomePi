@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+      "module": "system",
+      "moduleResolution": "node",
+      "noImplicitAny": true,
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "outFile": "./bin/main.js",
+      "sourceMap": true
+  },
+  "files": ["server.ts"],
+  "include": [
+      "src/**/*",
+      "node_modules/fp-ts/lib"
+  ],
+  "exclude": [
+      "node_modules",
+      "**/*.spec.ts"
+  ]
+}
