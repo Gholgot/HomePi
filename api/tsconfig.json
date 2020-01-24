@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-      "module": "system",
+      "module": "commonjs",
+      "lib": ["es2016"],
+      "target": "es2016",
       "moduleResolution": "node",
       "noImplicitAny": true,
       "removeComments": true,
       "preserveConstEnums": true,
-      "outFile": "./bin/main.js",
-      "sourceMap": true
+      "outDir": "./bin/",
+      "sourceMap": true,
+      "esModuleInterop": true
   },
   "files": ["server.ts"],
   "include": [

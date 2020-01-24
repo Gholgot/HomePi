@@ -1,14 +1,18 @@
 import * as TaskEither from 'fp-ts/lib/TaskEither';
 import { Option, None } from 'fp-ts/lib/Option';
+import userController from './controllers/user.controller';
 
 
 
 const fastify = require('fastify')({ logger: true })
 
-// Declare a route
-fastify.get('/', async (request: object, reply: object) => {
-  return { hello: 'world' }
+// JWT
+fastify.register(require('fastify-jwt'), {
+  secret: '_hqswtKI˜!Secret2020'
 })
+
+// Route Registering
+fastify.register(userController);
 
 // Run the server!
 const start = TaskEither.tryCatch<Error, Option<None>>(

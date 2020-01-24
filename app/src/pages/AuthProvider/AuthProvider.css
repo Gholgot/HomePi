@@ -1,0 +1,27 @@
+.authprovider {
+  --background: none;
+  background-image: url('/assets/login_background.jpeg');
+  background-size: cover;
+}
+
+.authprovider-container {
+  padding: 5px;
+  background-color: whitesmoke;
+}
+
+.authprovider-grid {
+  height: 100%;
+}
+
+.form-items {
+  --background: whitesmoke;
+  padding-bottom: 5px;
+}
+
+.form-items:last-child {
+  padding-bottom: 0px;
+}
+
+.authprovider-row {
+  margin-top: calc(50vh - 200px/2)
+}

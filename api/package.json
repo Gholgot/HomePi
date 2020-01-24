@@ -4,13 +4,18 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@types/mongoose": "^5.5.41",
     "fastify": "^2.11.0",
-    "fp-ts": "^2.4.0",
+    "fastify-plugin": "^1.6.0",
+    "fp-ts": "^2.4.1",
     "tslib": "^1.10.0"
   },
-  "script": {
-    "watch": "rollup --config rollup.config.js --watch",
-    "serve": "nodemon ./lib/server.js"
+  "scripts": {
+    "watch-build": "rollup --config rollup.config.js --watch",
+    "build": "rollup --config rollup.config.js",
+    "serve-watch": "nodemon ./bin/server.js",
+    "serve": "node ./bin/server.js",
+    "build&serve": "npm run build & npm run serve"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^2.1.0",
@@ -18,9 +23,6 @@
     "nodemon": "^2.0.2",
     "npm": "^6.13.6",
     "typescript": "^3.7.4"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gholgot",
   "license": "ISC"

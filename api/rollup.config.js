@@ -7,5 +7,7 @@ export default {
     dir: 'bin',
     format: 'cjs'
   },
-  plugins: [typescript()]
+  plugins: [
+    typescript(),
+  ]
 };
