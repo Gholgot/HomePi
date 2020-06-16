@@ -1,12 +1,17 @@
-import React from 'react';
-import { IonApp, IonContent, IonGrid, IonRow, IonCol, IonInput, IonLabel, IonButton, IonRippleEffect, IonIcon, IonItem, IonCard } from '@ionic/react';
+import React, { useState } from 'react';
+import { IonApp, IonContent, IonGrid, IonRow, IonCol, IonInput, IonButton, IonRippleEffect, IonIcon, IonItem, IonCard } from '@ionic/react';
 
-import { mail, lock } from 'ionicons/icons';
+import { mail as mailIcon, lock as lockIcon } from 'ionicons/icons';
 
+import { User } from '../../models/User';
 import { AuthHelper } from '../../helpers';
 import './AuthProvider.css';
 
-const AuthProvider: React.FC = () => (
+const AuthProvider: React.FC = () => {
+  const [mail, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
+
+  return (
   <IonApp className="authprovider">
     <IonContent fullscreen={true} className="authprovider">
       <IonGrid>
@@ -15,16 +20,16 @@ const AuthProvider: React.FC = () => (
             <div>
               <IonCard className="authprovider-container">
                 <IonItem className="form-items">
-                  <IonInput placeholder="Mail" pattern="email" required={true} type="email" autocomplete="on" autofocus={true} clear-input={true} />
-                  <IonIcon icon={mail} color="black" slot="start"></IonIcon>
+                  <IonInput placeholder="Mail" pattern="email" required={true} type="email" autocomplete="on" autofocus={true} clear-input={true} value={mail}  onIonChange={e => setEmail(e.detail.value!)}/>
+                  <IonIcon icon={mailIcon} color="black" slot="start"></IonIcon>
                 </IonItem>
                 <IonItem className="form-items">
-                  <IonInput placeholder="Password" pattern="password" required={true} type="password"></IonInput>
-                  <IonIcon icon={lock} color="black" slot="start"></IonIcon>
+                  <IonInput placeholder="Password" pattern="password" required={true} type="password" value={password} onIonChange={e => setPassword(e.detail.value!)}></IonInput>
+                  <IonIcon icon={lockIcon} color="black" slot="start"></IonIcon>
                 </IonItem>
-                <IonButton color="primary" size="default" expand="full">
+                <IonButton color="primary" size="default" expand="full" onClick={async () => await AuthHelper.authentificate(new User(mail, password))}>
                   Login
-            <IonRippleEffect></IonRippleEffect>
+                <IonRippleEffect></IonRippleEffect>
                 </IonButton>
               </IonCard>
             </div>
@@ -34,5 +39,6 @@ const AuthProvider: React.FC = () => (
     </IonContent>
   </IonApp>
 )
+}
 
 export default AuthProvider

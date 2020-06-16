@@ -1,5 +1,5 @@
-import React from 'react';
-import { AuthHelper } from './helpers';
+import React, { useEffect, useState } from 'react';
+import { StorageHelper } from './helpers';
 
 import AuthApp from './pages/AuthApp';
 import AuthProvider from './pages/AuthProvider';
@@ -24,8 +24,16 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App: React.FC = () => {
-  const user = null;
-  if (user != null) {
+  const [token, setToken] = useState();
+
+  useEffect(()=> {
+    StorageHelper.getToken().then((result: any) => {
+        setToken(result.value)
+      }
+    )
+  })
+
+  if (token !== '' && token !== undefined) {
     return <AuthApp />
   }
   return <AuthProvider />

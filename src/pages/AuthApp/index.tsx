@@ -5,20 +5,21 @@ import { IonReactRouter } from '@ionic/react-router';
 import { AppPage } from '../../declarations';
 
 import Menu from '../../components/Menu';
-import Home from '../Home/';
-import List from '../List';
-import { home, list } from 'ionicons/icons';
+import Dashboard from '../Dashbaord';
+import { tv, cloudCircle } from 'ionicons/icons';
+import FilesComponent from '../Files';
+import Upload from '../../components/upload/Upload';
 
 const appPages: AppPage[] = [
   {
-    title: 'Home',
-    url: '/home',
-    icon: home
+    title: 'Dashboard',
+    url: '/dashboard',
+    icon: tv
   },
   {
-    title: 'List',
-    url: '/home/list',
-    icon: list
+    title: 'Storage',
+    url: '/storage',
+    icon: cloudCircle
   }
 ];
 
@@ -28,11 +29,12 @@ const AuthApp: React.FC = () => (
       <IonSplitPane contentId="main">
         <Menu appPages={appPages} />
         <IonRouterOutlet id="main">
-          <Route path="/home" component={Home} exact={true} />
-          <Route path="/home/list" component={List} exact={true} />
-          <Route path="/" render={() => <Redirect to="/home" />} exact={true} />
+          <Route path="/dashboard" component={Dashboard} exact={true} />
+          <Route path="/storage" component={FilesComponent} exact={true} />
+          <Route path="/" render={() => <Redirect to="/dashboard" />} exact={true} />
         </IonRouterOutlet>
       </IonSplitPane>
+      <Upload/>
     </IonReactRouter>
   </IonApp>
 )
