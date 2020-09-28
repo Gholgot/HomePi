@@ -32,7 +32,7 @@ const DashboardPage: React.FC = () => {
           </IonCardHeader>
           <IonCardContent>
             <p>
-              No modifications withing the last 7 days
+              No modifications within the last 7 days
             </p>
           </IonCardContent>
         </IonCard>

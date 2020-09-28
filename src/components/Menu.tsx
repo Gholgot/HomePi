@@ -19,11 +19,18 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { AppPage } from '../declarations';
 import './Menu.css';
 
+function logout(history: any): void {
+  AuthHelper.logout().then(() => {
+    console.log(history)
+    history.push('/')
+  })
+}
+
 interface MenuProps extends RouteComponentProps {
   appPages: AppPage[];
 }
 
-const Menu: React.FunctionComponent<MenuProps> = ({ appPages }) => (
+const Menu: React.FunctionComponent<MenuProps> = ({ appPages, history }) => (
   <IonMenu contentId="main" className="main-panel-menu">
     <IonHeader>
       <IonToolbar>
@@ -42,7 +49,7 @@ const Menu: React.FunctionComponent<MenuProps> = ({ appPages }) => (
             );
           })}
         </IonList>
-        <IonButton expand="full" color="danger" onClick={AuthHelper.logout}>
+        <IonButton expand="full" color="danger" onClick={async () => await logout(history)}>
           Logout
         <IonIcon slot="end" icon={exit} />
         </IonButton>

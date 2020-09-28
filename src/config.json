@@ -1,6 +1,7 @@
 {
-  "API_URL": "http://localhost:9000",
+  "API_URL": "http://localhost:9000/api",
   "API_ROUTES": {
-    "getToken": "/api/auth"
+    "getToken": "/auth",
+    "fileUpload": "/file"
   }
 }

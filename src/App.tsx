@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { StorageHelper } from './helpers';
+import { useStore } from 'effector-react';
+import { tokenStore } from './stores/auth.store'
+
 
 import AuthApp from './pages/AuthApp';
 import AuthProvider from './pages/AuthProvider';
@@ -24,16 +27,15 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App: React.FC = () => {
-  const [token, setToken] = useState();
+  const token = useStore(tokenStore)
 
-  useEffect(()=> {
-    StorageHelper.getToken().then((result: any) => {
-        setToken(result.value)
-      }
-    )
-  })
+  useEffect(() => {
+    if(!token || token === "") {
+      StorageHelper.getToken()
+    }
+  }, [token])
 
-  if (token !== '' && token !== undefined) {
+  if (token !== '' && token && token !== null && typeof token !== "undefined" &&  token !== "Wrong creadentials") {
     return <AuthApp />
   }
   return <AuthProvider />

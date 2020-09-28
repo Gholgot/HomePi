@@ -1,13 +1,12 @@
 import { User } from '../models/User';
 import StorageHelper from './storage.helper';
-import { logOut } from 'ionicons/icons';
 const { API_URL, API_ROUTES } = require('../config.json');
 
 const AuthHelper = {
   async authentificate(userInfos: User) {
-    require('dotenv').config()
+    require('dotenv').config();
 
-    await fetch(`${API_URL}${API_ROUTES.getToken}`, {
+    return await fetch(`${API_URL}${API_ROUTES.getToken}`, {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -20,14 +19,14 @@ const AuthHelper = {
     })
     .then((response) => response.text())
     .then(async (data) => {
-        await StorageHelper.setToken(data)
+      await StorageHelper.setToken(data);
     })
     .catch(err => {
-      console.log("ERROR:", err)
+      console.log("ERROR:", err);
     })
   },
-  async logout() {
-    // Here we should revoke token
+  async logout(): Promise<void> {
+    // Here we should also make a call to the API to revoke the token
     StorageHelper.setToken("");
   }
 }
