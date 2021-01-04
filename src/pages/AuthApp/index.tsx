@@ -6,9 +6,9 @@ import { AppPage } from '../../declarations';
 
 import Menu from '../../components/Menu';
 import Dashboard from '../Dashbaord';
-import { tv, cloudCircle } from 'ionicons/icons';
+import { tv, cloudCircle, people } from 'ionicons/icons';
 import FilesComponent from '../Files';
-import Upload from '../../components/upload/Upload';
+import SharedContent from '../SharedContent';
 
 const appPages: AppPage[] = [
   {
@@ -20,21 +20,26 @@ const appPages: AppPage[] = [
     title: 'Storage',
     url: '/storage',
     icon: cloudCircle
+  },
+  {
+    title: 'Shared Content',
+    url: '/shared',
+    icon: people
   }
 ];
 
 const AuthApp: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonSplitPane contentId="main">
+      <IonSplitPane contentId="main" >
         <Menu appPages={appPages} />
         <IonRouterOutlet id="main">
           <Route path="/dashboard" component={Dashboard} exact={true} />
-          <Route path="/storage" component={FilesComponent} exact={true} />
+          <Route path="/storage/:folderId?" component={FilesComponent} exact={true} />
+          <Route path="/shared/:folderId?" component={SharedContent} exact={true} />
           <Route path="/" render={() => <Redirect to="/dashboard" />} exact={true} />
         </IonRouterOutlet>
       </IonSplitPane>
-      <Upload/>
     </IonReactRouter>
   </IonApp>
 )

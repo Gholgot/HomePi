@@ -1,5 +1,5 @@
 import { User } from '../models/User';
-import StorageHelper from './storage.helper';
+import LocalStorageHelper from './locale-storage.helper';
 const { API_URL, API_ROUTES } = require('../config.json');
 
 const AuthHelper = {
@@ -17,17 +17,20 @@ const AuthHelper = {
       referrerPolicy: 'no-referrer',
       body: JSON.stringify({email: userInfos.getMail(), password: userInfos.getPassword()})
     })
-    .then((response) => response.text())
-    .then(async (data) => {
-      await StorageHelper.setToken(data);
-    })
+    .then(async (response: Response) => {
+      if(response.ok) {
+        return response.json()
+      } else {
+        Promise.reject()
+      }
+    }).then(jsonReponse => LocalStorageHelper.setToken(jsonReponse))
     .catch(err => {
       console.log("ERROR:", err);
     })
   },
   async logout(): Promise<void> {
     // Here we should also make a call to the API to revoke the token
-    StorageHelper.setToken("");
+    LocalStorageHelper.setToken("");
   }
 }
 

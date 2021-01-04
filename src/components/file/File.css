@@ -1,0 +1,8 @@
+.file-list-item {
+}
+
+.file-list-item .file-list-item-icon {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+}

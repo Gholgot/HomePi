@@ -1,8 +1,11 @@
-interface File {
+interface FileModel {
+  id: string,
   name: string;
   size: number;
-  blob: ArrayBuffer;
-  updateDate?: Date;
+  contentType: string;
+  folderId?: string;
+  creationDate: Date,
+  updateDate: Date
 }
 
-export default File;
+export default FileModel;

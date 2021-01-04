@@ -31,7 +31,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if(!token || token === "") {
-      StorageHelper.getToken()
+      StorageHelper.getTokenEffect()
     }
   }, [token])
 

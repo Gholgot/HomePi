@@ -20,20 +20,23 @@ const AuthProvider: React.FC<any> = () => {
             <IonCol sizeSm="7" sizeLg="5" sizeXl="4" offsetMd="4" text-suppressContentEditableWarning>
               <div>
                 <IonCard className="authprovider-container">
-                  <form>
+                  <form onSubmit={(event) => {
+                    event.preventDefault();
+                    AuthHelper.authentificate(new User(mail, password));
+                  }}>
                     <IonItem className="form-items">
-                      <IonInput placeholder="Mail" pattern="email" required={true} type="email" autocomplete="on" autofocus={true} clear-input={true} value={mail} onIonChange={e => setEmail(e.detail.value!)} />
+                      <IonInput placeholder="Mail" required={true} type="email" autocomplete="on" inputmode="email" autofocus={true} clear-input={true} value={mail} onIonChange={e => setEmail(e.detail.value!)} />
                       <IonIcon icon={mailIcon} color="black" slot="start"></IonIcon>
                     </IonItem>
                     <IonItem className="form-items">
-                      <IonInput placeholder="Password" pattern="password" required={true} type="password" value={password} onIonChange={e => setPassword(e.detail.value!)}></IonInput>
+                      <IonInput placeholder="Password" required={true} type="password" value={password} onIonChange={e => setPassword(e.detail.value!)}></IonInput>
                       <IonIcon icon={lockIcon} color="black" slot="start"></IonIcon>
                     </IonItem>
+                    <IonButton type="submit" color="primary" size="default" expand="full">
+                      Login
+                    <IonRippleEffect></IonRippleEffect>
+                    </IonButton>
                   </form>
-                  <IonButton color="primary" size="default" expand="full" onClick={async () => AuthHelper.authentificate(new User(mail, password))}>
-                    Login
-              <IonRippleEffect></IonRippleEffect>
-                  </IonButton>
                 </IonCard>
               </div>
             </IonCol>

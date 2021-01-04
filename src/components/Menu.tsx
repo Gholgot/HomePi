@@ -7,7 +7,6 @@ import {
   IonList,
   IonMenu,
   IonTitle,
-  IonButton,
   IonToolbar,
   IonMenuToggle
 } from '@ionic/react';
@@ -48,11 +47,11 @@ const Menu: React.FunctionComponent<MenuProps> = ({ appPages, history }) => (
               </IonItem>
             );
           })}
+          <IonItem key='logout' color="danger" button onClick={async () => await logout(history)} >
+            <IonIcon slot="end" icon={exit} />
+            <IonLabel>Logout</IonLabel>
+          </IonItem>
         </IonList>
-        <IonButton expand="full" color="danger" onClick={async () => await logout(history)}>
-          Logout
-        <IonIcon slot="end" icon={exit} />
-        </IonButton>
       </IonMenuToggle>
     </IonContent>
   </IonMenu>

@@ -1,9 +1,9 @@
 import AuthHelper from './auth.helper';
-import StorageHelper from './storage.helper';
-import UploadHelper from './upload.helper';
+import LocalStorageHelper from './locale-storage.helper';
+import RemoteStorageHelper from './remote-storage.helper';
 
 export {
   AuthHelper,
-  StorageHelper,
-  UploadHelper
+  LocalStorageHelper as StorageHelper,
+  RemoteStorageHelper as UploadHelper
 }
