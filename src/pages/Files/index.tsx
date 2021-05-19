@@ -3,7 +3,7 @@ import './Files.css';
 import { IonPage, IonToolbar, IonHeader, IonButtons, IonMenuButton, IonTitle, IonContent, IonList } from '@ionic/react';
 import FileModel from '../../models/File';
 import { useParams } from 'react-router';
-import RemoteStorageHelper from '../../helpers/remote-storage.helper';
+import { RemoteStorageHelper } from '../../helpers/remote-storage.helper';
 import FileListItem from '../../components/file';
 import Upload from '../../components/upload/Upload';
 import { refresh } from 'ionicons/icons';
@@ -49,19 +49,19 @@ const FilesComponent: React.FC = () => {
         }
       </IonList>
     </IonContent>
-    <Upload onUploadComplete={() => setRefresh(true)}/>
+    <Upload onUploadComplete={() => setRefresh(true)} />
   </IonPage>)
 };
 
 
 function deleteOne(file: FileModel, fileList: FileModel[], setFileList: Dispatch<SetStateAction<FileModel[] | undefined>>) {
   RemoteStorageHelper.deleteOne(file.id, file.folderId)
-  .then((_) => {
-    setFileList(fileList.filter(f => f.id !== file.id))
-  })
-  .catch((e) => {
-    console.error(e)
-  })
+    .then((_) => {
+      setFileList(fileList.filter(f => f.id !== file.id))
+    })
+    .catch((e) => {
+      console.error(e)
+    })
 }
 
 export default FilesComponent

@@ -1,5 +1,5 @@
 import { createStore, createEvent } from 'effector';
-import LocalStorageHelper from '../helpers/locale-storage.helper';
+import { LocalStorageHelper } from '../helpers/locale-storage.helper';
 
 export const fetchTokenFromStorage = createEvent()
 

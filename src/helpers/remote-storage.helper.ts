@@ -1,10 +1,10 @@
-import LocalStorageHelper from './locale-storage.helper';
+import { LocalStorageHelper } from './locale-storage.helper';
 import File from '../models/File';
 import { API_URL } from '../config.json';
 
 import axios, { AxiosRequestConfig, AxiosPromise } from 'axios';
 
-const RemoteStorageHelper = {
+export const RemoteStorageHelper = {
   async upload(fileList: FileList) {
     const token: any = await LocalStorageHelper.getToken()
     const form : FormData =  new FormData()
@@ -56,5 +56,3 @@ const RemoteStorageHelper = {
     })
   }
 }
-
-export default RemoteStorageHelper

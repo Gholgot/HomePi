@@ -4,10 +4,11 @@ import { trash, download, create } from 'ionicons/icons';
 import FileModel from '../../models/File';
 
 interface FileProps {
-  file: FileModel
+  file: FileModel,
+  deleteOne: (file: FileModel) => void
 }
 
-const MobileFileListItem: React.FC<FileProps> = ({file}) => {
+const MobileFileListItem: React.FC<FileProps> = ({ file, deleteOne}) => {
   return (
     <IonItemSliding>
       <IonItem>
@@ -20,7 +21,7 @@ const MobileFileListItem: React.FC<FileProps> = ({file}) => {
         <IonItemOption color="tertiary" onClick={() => { }}>
         <IonIcon icon={create} />
         </IonItemOption>
-        <IonItemOption color="danger" onClick={() => { }}>
+        <IonItemOption color="danger" onClick={() => deleteOne(file)}>
         <IonIcon icon={trash} />
         </IonItemOption>
       </IonItemOptions>

@@ -1,8 +1,8 @@
 import { User } from '../models/User';
-import LocalStorageHelper from './locale-storage.helper';
+import { LocalStorageHelper } from './locale-storage.helper';
 const { API_URL, API_ROUTES } = require('../config.json');
 
-const AuthHelper = {
+export const AuthHelper = {
   async authentificate(userInfos: User) {
     require('dotenv').config();
 
@@ -33,5 +33,3 @@ const AuthHelper = {
     LocalStorageHelper.setToken("");
   }
 }
-
-export default AuthHelper;

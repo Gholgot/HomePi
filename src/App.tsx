@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StorageHelper } from './helpers';
+import { LocalStorageHelper } from './helpers/locale-storage.helper';
 import { useStore } from 'effector-react';
 import { tokenStore } from './stores/auth.store'
 
@@ -31,7 +31,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if(!token || token === "") {
-      StorageHelper.getTokenEffect()
+      LocalStorageHelper.getTokenEffect()
     }
   }, [token])
 

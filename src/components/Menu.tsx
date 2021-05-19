@@ -12,7 +12,7 @@ import {
 } from '@ionic/react';
 
 import { exit } from 'ionicons/icons';
-import { AuthHelper } from '../helpers';
+import { AuthHelper } from '../helpers/auth.helper';
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { AppPage } from '../declarations';

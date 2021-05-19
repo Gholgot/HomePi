@@ -2,7 +2,7 @@ import { Plugins } from '@capacitor/core';
 import { createEffect } from 'effector'
 const { Storage } = Plugins;
 
-const LocalStorageHelper = {
+export const LocalStorageHelper = {
   getToken: async () => {
     const token = await Storage.get({key: "token"})
     return token.value
@@ -24,5 +24,3 @@ const LocalStorageHelper = {
     }
   })
 }
-
-export default LocalStorageHelper

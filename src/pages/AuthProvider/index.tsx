@@ -4,7 +4,7 @@ import { IonApp, IonContent, IonGrid, IonRow, IonCol, IonInput, IonButton, IonRi
 import { mail as mailIcon, lock as lockIcon } from 'ionicons/icons';
 
 import { User } from '../../models/User';
-import { AuthHelper } from '../../helpers';
+import { AuthHelper } from '../../helpers/auth.helper';
 import './AuthProvider.css';
 
 
@@ -22,7 +22,7 @@ const AuthProvider: React.FC<any> = () => {
                 <IonCard className="authprovider-container">
                   <form onSubmit={(event) => {
                     event.preventDefault();
-                    AuthHelper.authentificate(new User(mail, password));
+                      AuthHelper.authentificate(new User(mail, password));
                   }}>
                     <IonItem className="form-items">
                       <IonInput placeholder="Mail" required={true} type="email" autocomplete="on" inputmode="email" autofocus={true} clear-input={true} value={mail} onIonChange={e => setEmail(e.detail.value!)} />
